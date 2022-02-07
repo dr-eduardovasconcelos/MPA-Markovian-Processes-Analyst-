@@ -436,10 +436,8 @@
 
         var container = document.getElementById("modelPanel")
         var options = {
-            layout: { randomSeed: 2},
-            physics:{repulsion: {springLength: 400}}
-           
-            
+            layout: { randomSeed: 2}
+  
         }
         var network
 
@@ -477,7 +475,7 @@
         /*
          * 
          * @returns {undefined}
-         * Este método é usado no evento que cria uma atividade
+         * Este mÃ©todo Ã© usado no evento que cria uma atividade
          */
         let createActivity = function () {
 
@@ -574,7 +572,7 @@
         /*
          * 
          * @returns {undefined}
-         * Método usado para alterar as informações de uma atividade
+         * MÃ©todo usado para alterar as informaÃ§Ãµes de uma atividade
          */
         let updateActivity = function(){
             
@@ -643,7 +641,7 @@
         /*
          * 
          * @type type
-         * Este evento insere a transição entre duas atividades
+         * Este evento insere a transiÃ§Ã£o entre duas atividades
          * 
          */
         document.getElementById("btnInsertTransition").addEventListener("click", function (event) {
@@ -681,8 +679,8 @@
         /*
          * 
          * @returns {undefined}
-         * Este método é usado no evento do click que abre o modal de criação das transições
-         * é ele quem prepara o select com as atividades disponíveis
+         * Este mÃ©todo Ã© usado no evento do click que abre o modal de criaÃ§Ã£o das transiÃ§Ãµes
+         * Ã© ele quem prepara o select com as atividades disponÃ­veis
          * 
          */
         const createTransition = function () {
@@ -737,11 +735,11 @@
          * @param {type} param
          * @returns {undefined}
          * 
-         * Este método é usado para criar o evento do click duplo na área de trabalho
+         * Este mÃ©todo Ã© usado para criar o evento do click duplo na Ã¡rea de trabalho
          */
         let onNetwork = function (param) {
             /*
-             * se o click duplo for feito no fundo da área de trabalho, abre o modal para criar uma atividade
+             * se o click duplo for feito no fundo da Ã¡rea de trabalho, abre o modal para criar uma atividade
              */
             if (param.nodes.length === 0 && param.edges.length === 0) {
                 $("#modalCreateActivity").modal("show")
@@ -749,8 +747,8 @@
             }
             
             /*
-             * O código abaixo é executado sempre que uma transição for clicada
-             * param � o atributo que bem da �rea de trabaho
+             * O cÃ³digo abaixo Ã© executado sempre que uma transiÃ§Ã£o for clicada
+             * param é o atributo que bem da área de trabaho
              */
             if(param.edges.length > 0 && param.nodes.length === 0){
                 
@@ -843,7 +841,7 @@
             /*
              * 
              * @type Element
-             * O código abaixo é executado sempre que uma atividade é clicada
+             * O cÃ³digo abaixo Ã© executado sempre que uma atividade Ã© clicada
              */
 
             const mainTable = document.getElementById("tblActInfo")
@@ -970,7 +968,7 @@
         document.getElementById("btnCreateTransition").addEventListener("click", createTransition)
         
         /*
-         * este código é usado para deletar uma atividade
+         * este cÃ³digo Ã© usado para deletar uma atividade
          */
         document.getElementById("btnDeleteActivity").addEventListener("click", function(event){
             
@@ -1025,7 +1023,7 @@
         })
         
         /*
-         * Código usado para deletar transições
+         * CÃ³digo usado para deletar transiÃ§Ãµes
          */
         let deleteTransition = function(event){
             
@@ -1063,7 +1061,7 @@
         }
         
         /*
-        * Código usado para atualizar os pesos das atividades
+        * CÃ³digo usado para atualizar os pesos das atividades
         */
         let updateTransition = function(event){
             
