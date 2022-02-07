@@ -13,7 +13,7 @@ problem with any other web browser, please, contact me.
 
 There is a help link on the top-right of the page, there, you can have an idea of how to use the system. You can also watch
 this video https://youtu.be/052JjBkhKwk. In this video, I show the basic steps to use the system. There is a little problem that is easy
-to overcome. The lesson is in Portuguese, which is not a big problem for those that have a little creativity:) 
+to overcome. The lesson is in Portuguese, which is not a big problem for those who have a little creativity :)
 
 --What kind of analysis can I do?
 
