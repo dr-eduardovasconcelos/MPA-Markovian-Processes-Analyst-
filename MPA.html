@@ -15,17 +15,20 @@
     You should have received a copy of the GNU General Public License
     along with MPA.  If not, see <https://www.gnu.org/licenses/>.
 -->
+
 <html>
 <head>
-    <title>MPA</title>
-    <script src="assets/jquery-3.6.0.slim.min.js"></script>
-    <script src="assets/vis-network.min.js"></script>
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-    <script src="assets/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="assets/bootstrap-theme.min.css">
-    <script src="assets/CTMCMTTF.js"></script>
-    <style>
     
+    <title>MPA</title>
+
+    <script src="assets/js/libraries/jquery-3.6.0.slim.min.js"></script>
+    <script src="assets/js/libraries/bootstrap.min.js"></script>
+    <script src="assets/js/libraries/vis-network.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+
+    <style>
         #modelPanel {
             position: relative;
             width: 100%;
@@ -33,6 +36,7 @@
             border: 1px solid black;
         }
     </style>
+
 </head>
 
 <body>
@@ -49,12 +53,14 @@
     </div>
     <div id="modelPanel"></div>
 
+    <!-- criar atividades-->
+    
     <div class="modal fade" id="modalCreateActivity" tabindex="-1" role="dialog" aria-labelledby="insert an activity"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="inseranactivity">Activity Informaion</h5>
+                    <h5 class="modal-title" >Activity Informaion</h5>
                     
                 </div>
                 <div class="modal-body">
@@ -91,6 +97,8 @@
         </div>
     </div>
 
+    <!-- Informação da atividades-->
+
     <div class="modal fade" id="modalActivityInfo" tabindex="-1" role="dialog" aria-labelledby="Activity information"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -100,7 +108,7 @@
                     
                 </div>
                 <div class="modal-body" id="actInfoBody">
-                    <h5 class="modal-title" id="Activityinformation">Activity Parameters</h5>
+                    <h5 class="modal-title" >Activity Parameters</h5>
                     <table id="tblActInfo" class="table">
 
                     </table>
@@ -110,7 +118,7 @@
                             data-dismiss="modal">delete this activity</button>
                 </div>
                 <div class="modal-body" id="edgesInfoBody">
-                    <h5 class="modal-title" id="Activityinformation">Activity Transitions</h5>
+                    <h5 class="modal-title" >Activity Transitions</h5>
                     <table id="tblEdgInfo" class="table">
 
                     </table>
@@ -126,12 +134,14 @@
         </div>
     </div>
 
+    <!-- criar transição-->
+
     <div class="modal fade" id="modalCreateTransition" tabindex="-1" role="dialog" aria-labelledby="insert atransition"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="insertatransition">Insert a Transition</h5>
+                    <h5 class="modal-title" >Insert a Transition</h5>
                     
                 </div>
                 <div class="modal-body">
@@ -146,7 +156,7 @@
                         <div class="input-group mb-3">
                             <label for="trWeigth">Transition weight:</label><br />
                             <input id="trWeigth" type="text" class="form-control" placeholder="weight"
-                                aria-label="weight" aria-describedby="basic-addon2">
+                                aria-label="weight" aria-describedby="basic-addon2"/>
                             <div style="color: blue;"><small>
                                     This value represents the proportion of times or the probability of this transition
                                     occurs.
@@ -163,12 +173,14 @@
         </div>
     </div>
     
+    <!-- Atualizar atividade-->
+
     <div class="modal fade" id="modalUpdateActivity" tabindex="-1" role="dialog" aria-labelledby="insert an activity"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateanactivity">Activity Informaion</h5>
+                    <h5 class="modal-title" >Activity Informaion</h5>
                     
                 </div>
                 <div class="modal-body">
@@ -206,16 +218,18 @@
         </div>
     </div>
     
+    <!-- Informação da Transição-->
+
     <div class="modal fade" id="modalTransitionInfo" tabindex="-1" role="dialog" aria-labelledby="Activity information"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="TransitionInfo">Transition info</h4>
+                    <h4 class="modal-title" >Transition info</h4>
                     
                 </div>
                 <div class="modal-body" id="actInfoBody">
-                    <h5 class="modal-title" id="Activityinformation">Parameters</h5>
+                    <h5 class="modal-title" >Parameters</h5>
                     <table id="tblTrInfo" class="table">
 
                     </table>
@@ -232,12 +246,14 @@
         </div>
     </div>
     
+    <!-- Atualização da transição-->
+
     <div class="modal fade" id="modalUpdateTransition" tabindex="-1" role="dialog" aria-labelledby="insert atransition"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateatransition">Transition Update</h5>
+                    <h5 class="modal-title" >Transition Update</h5>
                     
                 </div>
                 <div class="modal-body">
@@ -262,12 +278,14 @@
         </div>
     </div>
 
+    <!-- Gerar JSON-->
+
     <div class="modal fade" id="modalGnrJSON" tabindex="-1" role="dialog" aria-labelledby="copy JSON"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" >
-                    <h5 class="modal-title" id="gnrJsonInfo">Model JSON</h5>
+                    <h5 class="modal-title" >Model JSON</h5>
                     
                 </div>
                 <div class="modal-body">
@@ -283,12 +301,14 @@
         </div>
     </div>
 
+    <!-- Carregar JSON-->
+
     <div class="modal fade" id="modalLoadJSON" tabindex="-1" role="dialog" aria-labelledby="load JSON"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" >
-                    <h5 class="modal-title" id="loadJsonInfo">Load a JSON</h5>
+                    <h5 class="modal-title" >Load a JSON</h5>
                     
                 </div>
                 <div class="modal-body">
@@ -302,12 +322,14 @@
         </div>
     </div>
 
+    <!-- Resultado da análise-->
+
     <div class="modal fade" id="modalResult" tabindex="-1" role="dialog" aria-labelledby="load JSON"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" >
-                    <h4 class="modal-title" id="loadJsonInfo">Results</h4>
+                    <h4 class="modal-title" >Results</h4>
                     
                 </div>
                 <div class="modal-body">
@@ -345,6 +367,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Help -->
 
     <div class="modal fade" id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="load JSON"
         aria-hidden="true">
@@ -414,6 +438,8 @@
         </div>
     </div>
 
+    <!-- Painel da parte de baixo -->
+
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="" >
@@ -432,887 +458,13 @@
         </div>
     </div>
 
-    <script>
-
-        var container = document.getElementById("modelPanel")
-        var options = {
-            layout: { randomSeed: 2}
-  
-        }
-        var network
-
-        var nodes = []
-        var edges = []
-        var lastNode = 1
-
-        var boardNodes
-        var boardEdges
-        
-        network = new vis.Network(container, {}, options)
-        network.on("doubleClick", function(){
-            $("#modalCreateActivity").modal("show")
-                return
-        })
-        
-        function restartBoard(){
-            
-            network.destroy()
-            network = null
-            
-            boardNodes = new vis.DataSet(nodes)
-            boardEdges = new vis.DataSet(edges)
-
-            const data = { nodes: boardNodes, edges: boardEdges }
-
-            network = new vis.Network(container, data, options)
-
-            network.on("doubleClick", onNetwork)
-            
-            document.body.setArrtibute("width","100%")
-        }
-        
-
-        /*
-         * 
-         * @returns {undefined}
-         * Este mÃ©todo Ã© usado no evento que cria uma atividade
-         */
-        let createActivity = function () {
-
-            let label = document.forms[0].getElementsByTagName("input")[0].value
-            let isLabelExistent = false
-            let time = document.forms[0].getElementsByTagName("input")[1].value
-            let cost = document.forms[0].getElementsByTagName("input")[2].value
-
-            nodes.forEach((element) => {
-                if (element.label.split(":")[1] === label) {
-                    alert(`the label ${label} is already been used in another activity`)
-                    document.forms[0].getElementsByTagName("input")[0].value = ""
-                    isLabelExistent = true
-                    return
-                }
-            })
-
-            if (isLabelExistent) {
-                return
-            }
-
-            if (time == "") {
-                time = 1
-            }
-
-            if (cost == "") {
-                cost = 1
-            }
-
-            if (isNaN(time)) {
-                alert("type a number on activity duration field")
-
-                document.forms[0].getElementsByTagName("input")[1].value = ""
-                return;
-            }
-
-            if (isNaN(cost)) {
-                alert("type a number on activity cost field")
-
-                document.forms[0].getElementsByTagName("input")[2].value = ""
-                return
-            }
-
-            time = parseFloat(time)
-            cost = parseFloat(cost)
-
-            if (time <= 0) {
-                alert("type a period > 0")
-                document.forms[0].getElementsByTagName("input")[1].value = ""
-                return
-            }
-
-            if (cost <= 0) {
-                alert("type a cost > 0")
-                document.forms[0].getElementsByTagName("input")[2].value = ""
-                return
-            }
-
-            document.forms[0].getElementsByTagName("input")[0].value = ""
-            document.forms[0].getElementsByTagName("input")[1].value = ""
-            document.forms[0].getElementsByTagName("input")[2].value = ""
-            
-            if(lastNode!=1){
-                nodes.push({
-                    id: lastNode++,
-                    label: `#${lastNode - 1}:${label}`,
-                    activityLabel: label,
-                    time: time,
-                    cost: cost,
-                    transitions: [],
-                    color: "#dddddd",
-                    physics: false
-                })
-            }else{
-                nodes.push({
-                    id: lastNode++,
-                    label: `#${lastNode - 1}:${label}`,
-                    activityLabel: label,
-                    time: time,
-                    cost: cost,
-                    transitions: [],
-                    color: "#dda0a0",
-                    physics: false
-                })
-            }
-
-            restartBoard()
-
-        }
-
-
-        document.getElementById("btnCreateActivity").addEventListener("click", createActivity)
-        
-        /*
-         * 
-         * @returns {undefined}
-         * MÃ©todo usado para alterar as informaÃ§Ãµes de uma atividade
-         */
-        let updateActivity = function(){
-            
-            const conf = confirm("Are you sure you want to update this activity?")
-            
-            if(!conf){
-                return
-            }
-            
-            const updateForm = document.forms[2]
-            
-            const id = updateForm.getElementsByTagName("input")[0].value
-            let label = updateForm.getElementsByTagName("input")[1].value
-            let time = updateForm.getElementsByTagName("input")[2].value
-            let cost = updateForm.getElementsByTagName("input")[3].value
-            
-            if(isNaN(time)){
-                alert("type a number on activity duration field")
-                return
-            }
-            
-            if(time === ""){
-                time = 1
-            }
-            
-            if(isNaN(cost)){
-                alert("type a number on cost field")
-                return
-            }
-
-            time = parseFloat(time)
-            cost = parseFloat(cost)
-
-            if (time <= 0) {
-                alert("type a period > 0")
-                document.forms[0].getElementsByTagName("input")[1].value = ""
-                return
-            }
-
-            if (cost <= 0) {
-                alert("type a cost > 0")
-                document.forms[0].getElementsByTagName("input")[2].value = ""
-                return
-            }
-            
-            if(cost === ""){
-                cost = 1
-            }
-            
-            const node = nodes[id-1]
-            
-            node.activityLabel = label
-            node.label = `#${id}:${label}`
-            node.time = time
-            node.cost = cost
-            
-            restartBoard()
-            
-            $("#modalActivityInfo").modal("hide")
-            
-            
-        }
-        
-        document.getElementById("btnUpdateActivity").addEventListener("click",updateActivity)
-        
-        /*
-         * 
-         * @type type
-         * Este evento insere a transiÃ§Ã£o entre duas atividades
-         * 
-         */
-        document.getElementById("btnInsertTransition").addEventListener("click", function (event) {
-
-            const selectTo = document.forms[1].getElementsByTagName("select")[0]
-            const node = nodes[event.target.getAttribute("trId") - 1]
-
-            while (selectTo.lastChild) {
-                selectTo.removeChild(selectTo.firstChild)
-            }
-
-            nodes.forEach(element => {
-
-                if (element.id !== node.id) {
-                    let haveIThisTransition = false
-                    for (let i = 0; i < node.transitions.length; i++) {
-                        if (element.id === node.transitions[i].to) {
-                            haveIThisTransition = true
-                            break
-                        }
-                    }
-                    if (haveIThisTransition === false) {
-                        const opt = document.createElement("option")
-                        opt.setAttribute("value", element.id)
-                        opt.appendChild(document.createTextNode(element.label))
-                        selectTo.appendChild(opt)
-                    }
-                }
-
-            })
-
-        })
-
-
-        /*
-         * 
-         * @returns {undefined}
-         * Este mÃ©todo Ã© usado no evento do click que abre o modal de criaÃ§Ã£o das transiÃ§Ãµes
-         * Ã© ele quem prepara o select com as atividades disponÃ­veis
-         * 
-         */
-        const createTransition = function () {
-            const selectTo = document.forms[1].getElementsByTagName("select")[0]
-            if (selectTo.value == "") {
-                alert("You need to select an activity to create a transition")
-                return
-            }
-            const node = nodes[document.getElementById("btnInsertTransition").getAttribute("trId") - 1]
-            const nodeTo = nodes[parseInt(selectTo.value) - 1]
-
-            let w = document.forms[1].getElementsByTagName("input")[0].value
-
-            if (w === "") {
-                w = 1
-            }
-
-            if (isNaN(w) || w <= 0) {
-                alert("the weight needs to be a number greater than 0")
-                document.forms[1].getElementsByTagName("input")[0].value = ""
-                return
-            }
-
-            node.transitions.push({ to: nodeTo.id, weight: parseFloat(w) })
-            
-            if(node.id!=1)
-                delete node.color
-
-            edges.push({from: node.id, 
-                to: nodeTo.id, 
-                label: w+"",
-                arrows: {
-                    to: {
-                        enabled: true,
-                        type: "arrow",
-                    }
-                }
-            })
-            
-            document.forms[1].getElementsByTagName("input")[0].value = ""
-            
-            $("#modalActivityInfo").modal("hide")
-            
-            restartBoard()
-
-
-        }
-
-
-        /*
-         * 
-         * @param {type} param
-         * @returns {undefined}
-         * 
-         * Este mÃ©todo Ã© usado para criar o evento do click duplo na Ã¡rea de trabalho
-         */
-        let onNetwork = function (param) {
-            /*
-             * se o click duplo for feito no fundo da Ã¡rea de trabalho, abre o modal para criar uma atividade
-             */
-            if (param.nodes.length === 0 && param.edges.length === 0) {
-                $("#modalCreateActivity").modal("show")
-                return
-            }
-            
-            /*
-             * O cÃ³digo abaixo Ã© executado sempre que uma transiÃ§Ã£o for clicada
-             * param é o atributo que bem da área de trabaho
-             */
-            if(param.edges.length > 0 && param.nodes.length === 0){
-                
-                const edgId = param.edges[0]
-                
-                let edge
-                let i = 0
-                
-                for(i = 0; i < edges.length; i++){
-                    if(edges[i].id == edgId){
-                        edge = edges[i]
-                        break
-                    }
-                }
-                
-                const trTbl = document.getElementById("tblTrInfo")
-                
-                while (trTbl.firstChild) {
-                    trTbl.removeChild(trTbl.lastChild);
-                }
-                
-                const firstTR = document.createElement("tr")
-                const firstTDLabel = document.createElement("th")
-                firstTDLabel.appendChild(document.createTextNode("From Activity"))
-                const firstTDValue = document.createElement("td")
-                firstTDValue.appendChild(document.createTextNode(nodes[edge.from - 1].label))
-                firstTR.appendChild(firstTDLabel)
-                firstTR.appendChild(firstTDValue)
-                trTbl.appendChild(firstTR)
-
-
-                const secondTR = document.createElement("tr")
-                const secondTDLabel = document.createElement("th")
-                secondTDLabel.appendChild(document.createTextNode("To Activity:"))
-                const secondTDValue = document.createElement("td")
-                secondTDValue.appendChild(document.createTextNode(nodes[edge.to - 1].label))
-                secondTR.appendChild(secondTDLabel)
-                secondTR.appendChild(secondTDValue)
-                trTbl.appendChild(secondTR)
-                
-                let weight = 0
-                
-                nodes[edge.from - 1].transitions.forEach(element => {
-                    if(element.to == edge.to){
-                        weight = element.weight
-                    }
-                })
-
-                const thirdTR = document.createElement("tr")
-                const thirdTDLabel = document.createElement("th")
-                thirdTDLabel.appendChild(document.createTextNode("Weight:"))
-                const thirdTDValue = document.createElement("td")
-                thirdTDValue.appendChild(document.createTextNode(weight))
-                thirdTR.appendChild(thirdTDLabel)
-                thirdTR.appendChild(thirdTDValue)
-                trTbl.appendChild(thirdTR)
-                
-                document.getElementById("btnPModalUpdateTransition").setAttribute("edgIndex",i)
-                document.getElementById("btnPModalUpdateTransition").addEventListener("click", function(event){
-                    
-                    const edge = edges[event.target.getAttribute("edgIndex")]
-                    
-                    const nodeFrom = nodes[edge.from - 1]
-                    
-                    let index = 0
-                    for(index = 0; index < nodeFrom.transitions.length; index++){
-                        if(nodeFrom.transitions[index].to == edge.to){
-                            document.getElementById("trUpWeight").value = nodeFrom.transitions[index].weight
-                            break
-                        }
-                    }
-                    
-                    document.getElementById("btnUpdateTransition").setAttribute("actId",nodeFrom.id)
-                    document.getElementById("btnUpdateTransition").setAttribute("trIndex", index)
-                    document.getElementById("btnUpdateTransition").setAttribute("edgIndex", event.target.getAttribute("edgIndex"))
-                    document.getElementById("btnUpdateTransition").addEventListener("click",updateTransition)
-                    
-                    $("#modalUpdateTransition").modal("show")
-                })
-                
-                document.getElementById("btnDeleteTransition").setAttribute("fromId",edge.from)
-                document.getElementById("btnDeleteTransition").setAttribute("ToId",edge.to)
-                document.getElementById("btnDeleteTransition").addEventListener("click",deleteTransition)
-                
-                $("#modalTransitionInfo").modal("show")
-                
-                return
-            }
-            
-            /*
-             * 
-             * @type Element
-             * O cÃ³digo abaixo Ã© executado sempre que uma atividade Ã© clicada
-             */
-
-            const mainTable = document.getElementById("tblActInfo")
-
-            while (mainTable.firstChild) {
-                mainTable.removeChild(mainTable.lastChild);
-            }
-
-            const node = nodes[param.nodes[0] - 1]
-            
-            document.getElementById("Activityinformation").innerHTML = `Activity <b><i>${node.label}</i></b> Info:`
-
-            const firstTR = document.createElement("tr")
-            const firstTDLabel = document.createElement("th")
-            firstTDLabel.appendChild(document.createTextNode("Activity Id"))
-            const firstTDValue = document.createElement("td")
-            firstTDValue.appendChild(document.createTextNode(node.id))
-            firstTR.appendChild(firstTDLabel)
-            firstTR.appendChild(firstTDValue)
-            mainTable.appendChild(firstTR)
-
-
-            const secondTR = document.createElement("tr")
-            const secondTDLabel = document.createElement("th")
-            secondTDLabel.appendChild(document.createTextNode("Activity Label:"))
-            const secondTDValue = document.createElement("td")
-            secondTDValue.appendChild(document.createTextNode(node.label.split(":")[1]))
-            secondTR.appendChild(secondTDLabel)
-            secondTR.appendChild(secondTDValue)
-            mainTable.appendChild(secondTR)
-
-            const thirdTR = document.createElement("tr")
-            const thirdTDLabel = document.createElement("th")
-            thirdTDLabel.appendChild(document.createTextNode("Activity Period:"))
-            const thirdTDValue = document.createElement("td")
-            thirdTDValue.appendChild(document.createTextNode(node.time))
-            thirdTR.appendChild(thirdTDLabel)
-            thirdTR.appendChild(thirdTDValue)
-            mainTable.appendChild(thirdTR)
-
-            const forthTR = document.createElement("tr")
-            const forthTDLabel = document.createElement("th")
-            forthTDLabel.appendChild(document.createTextNode("Activity Cost"))
-            const forthTDValue = document.createElement("td")
-            forthTDValue.appendChild(document.createTextNode(node.cost))
-            forthTR.appendChild(forthTDLabel)
-            forthTR.appendChild(forthTDValue)
-            mainTable.appendChild(forthTR)
-
-            const edgTable = document.getElementById("tblEdgInfo")
-
-            while (edgTable.firstChild) {
-                edgTable.removeChild(edgTable.lastChild);
-            }
-
-            if (node.transitions.length === 0) {
-                edgTable.append(document.createTextNode("This activity has no transitions"))
-            } else {
-
-                const firstTR = document.createElement("tr")
-                const firstTDTo = document.createElement("th")
-                firstTDTo.appendChild(document.createTextNode("to-ID"))
-                firstTR.appendChild(firstTDTo)
-                const firstTDToLabel = document.createElement("th")
-                firstTDToLabel.appendChild(document.createTextNode("to-label"))
-                firstTR.appendChild(firstTDToLabel)
-                const firstTDWeight = document.createElement("th")
-                firstTDWeight.appendChild(document.createTextNode("weight"))
-                firstTR.appendChild(firstTDWeight)
-                edgTable.appendChild(firstTR)
-                const firstTDOps = document.createElement("th")
-                firstTDOps.appendChild(document.createTextNode("operation"))
-                firstTR.appendChild(firstTDOps)
-                edgTable.appendChild(firstTR)
-
-                node.transitions.forEach(element => {
-                    const innerTR = document.createElement("tr")
-                    const innerTDTo = document.createElement("td")
-                    innerTDTo.appendChild(document.createTextNode(element.to))
-                    innerTR.appendChild(innerTDTo)
-                    
-                    const innerTDToLabel = document.createElement("td")
-                    innerTDToLabel.appendChild(document.createTextNode(nodes[element.to - 1].label.split(":")[1]))
-                    innerTR.appendChild(innerTDToLabel)
-                    
-                    const innerTDWeight = document.createElement("td")
-                    innerTDWeight.appendChild(document.createTextNode(element.weight))
-                    innerTR.appendChild(innerTDWeight)
-                    
-                    const innerTDOps = document.createElement("td")
-                    const deleteTransitionLink = document.createElement("button")
-                    deleteTransitionLink.setAttribute("class","btn btn-link deleteTransition")
-                    deleteTransitionLink.setAttribute("toId",element.to+"")
-                    deleteTransitionLink.setAttribute("fromId",node.id+"")
-                    deleteTransitionLink.appendChild(document.createTextNode("delete"))
-                    innerTDOps.appendChild(deleteTransitionLink)
-                    innerTR.appendChild(innerTDOps)
-                    edgTable.appendChild(innerTR)
-                    
-                    $(".deleteTransition").on("click",deleteTransition)
-                })
-            }
-
-            document.getElementById("btnInsertTransition").setAttribute("trId", node.id)
-            document.getElementById("btnDeleteActivity").setAttribute("trId", node.id)
-            const updateButton = document.getElementById("btnPModalUpdateActivity")
-            updateButton.setAttribute("actId", node.id)
-            updateButton.addEventListener("click", function(event){
-                
-                const form = document.forms[2]
-                
-                form.getElementsByTagName("input")[0].value = node.id
-                form.getElementsByTagName("input")[1].value = node.activityLabel
-                form.getElementsByTagName("input")[2].value = node.time
-                form.getElementsByTagName("input")[3].value = node.cost
-                
-                $("#modalUpdateActivity").modal("show")
-                
-            })
-
-            $("#modalActivityInfo").modal("show")
-        }
-
-        document.getElementById("btnCreateTransition").addEventListener("click", createTransition)
-        
-        /*
-         * este cÃ³digo Ã© usado para deletar uma atividade
-         */
-        document.getElementById("btnDeleteActivity").addEventListener("click", function(event){
-            
-            const node = nodes[event.target.getAttribute("trId") - 1]
-            
-            const conf = confirm("Are you sure that you want to delete the activity: "+node.label+"?")
-            if(!conf){
-                return
-            }
-            
-            for(let i = 0; i < nodes.length; i++){
-                
-                if(nodes[i].id > node.id){
-                    nodes[i].id--
-                    nodes[i].label = `#${nodes[i].id}:${nodes[i].activityLabel}`
-                }
-                for(let j = 0; j < nodes[i].transitions.length; j++){
-                    if(nodes[i].transitions[j].to === node.id){
-                        nodes[i].transitions.splice(j,1)
-                        j--
-                    }else if(nodes[i].transitions[j].to > node.id){
-                        nodes[i].transitions[j].to--
-                    }
-                }
-                
-            }
-            
-            nodes.splice(node.id-1,1)
-            
-            lastNode--
-            
-            if(node.id == 1 && nodes.length>0){
-                nodes[0].color = "#dda0a0"
-            }
-            
-           
-            for(let i = 0; i < edges.length; i++){
-                if(edges[i].from === node.id || edges[i].to === node.id){
-                    edges.splice(i,1)
-                    i--
-                    continue
-                }
-                if(edges[i].from>node.id)
-                    edges[i].from--
-                if(edges[i].to>node.id)
-                    edges[i].to--
-            }
-            
-            
-            restartBoard()
-            
-        })
-        
-        /*
-         * CÃ³digo usado para deletar transiÃ§Ãµes
-         */
-        let deleteTransition = function(event){
-            
-            const conf = confirm("Are you sure you want to delete this transition?")
-            
-            if(!conf)
-                return
-            
-            const nodeTo = nodes[event.target.getAttribute("toId") - 1]
-            const nodeFrom = nodes[event.target.getAttribute("fromId") -1]
-            
-            for(let i = 0; i < nodeFrom.transitions.length; i++){
-                if(nodeFrom.transitions[i].to === nodeTo.id){
-                    nodeFrom.transitions.splice(i,1)
-                    break
-                }
-            }
-            
-            for(let i = 0; i < edges.length; i++){
-                if(edges[i].from === nodeFrom.id && edges[i].to === nodeTo.id){
-                    edges.splice(i, 1)
-                    break
-                }
-            }
-            
-            if(nodeFrom.id != 1 && nodeFrom.transitions.length === 0){
-                nodeFrom.color = "#dddddd"
-            }
-            
-            $("#modalActivityInfo").modal("hide")
-            $("#modalTransitionInfo").modal("hide")
-            
-            restartBoard()
-            
-        }
-        
-        /*
-        * CÃ³digo usado para atualizar os pesos das atividades
-        */
-        let updateTransition = function(event){
-            
-            const conf = confirm("Are you sure you want to update this transition?")
-            
-            if(!conf)
-                return
-            
-            const node = nodes[event.target.getAttribute("actId") - 1]
-            const edge = edges[event.target.getAttribute("edgindex")]
-            const trIndex = event.target.getAttribute("trIndex")
-            
-            const newWeight = document.getElementById("trUpWeight").value
-            
-            node.transitions[trIndex].weight = parseFloat(newWeight)
-            
-            edge.label = newWeight
-            
-            $("#modalTransitionInfo").modal("hide")
-            
-            restartBoard()
-            
-        }
-
-        document.getElementById("btnGnrJSON").addEventListener("click", function(){
-            
-            const jso = JSON.parse(JSON.stringify(nodes))
-            
-            for(let i = 0; i < jso.length; i++){
-                delete jso[i].physics
-            }
-
-            txtAreaJson = document.getElementById("txtAreaGnrJSON")
-
-            txtAreaJson.value = JSON.stringify(jso)
-
-        })
-
-        document.getElementById("btnLoadJSON").addEventListener("click", function(){
-            let auxNodes = []
-            try{
-                auxNodes = JSON.parse(document.getElementById("txtAreaLoadJSON").value)
-
-            }catch(e){
-                alert("there are problems with your JSON")
-                document.getElementById("txtAreaLoadJSON").value = ""
-
-                return
-            }
-
-            nodes = auxNodes
-            
-            nodes.forEach(el => {
-                el.physics = false
-            })
-
-            edges = []
-
-            for(let i = 0; i < nodes.length; i++){
-
-                for(let j = 0; j < nodes[i].transitions.length; j++){
-                    edges.push({
-                        from: nodes[i].id,
-                        to: nodes[i].transitions[j].to,
-                        label: nodes[i].transitions[j].weight+"",
-                        arrows: {
-                            to: {
-                                enabled: true,
-                                type: "arrow",
-                            }
-                        },
-                        
-                    })
-                }
-
-            }
-
-            lastNode = nodes.length + 1
-
-            restartBoard()
-
-        })
-
-        document.getElementById("btnPerfAnalysis").addEventListener("click",function(event){
-
-            const chain = []
-
-            nodes.forEach((element, index) => {
-
-                chain.push({
-                        number: element.id,
-                        isInitialState: false,
-                        transitions:[]
-
-                })
-
-                let sumProbabilities = 0;
-
-                for(let i = 0; i < element.transitions.length; i++){
-                    sumProbabilities += element.transitions[i].weight
-                }
-
-                for(let i = 0; i < element.transitions.length; i++){
-                    chain[index].transitions.push({
-                        to: element.transitions[i].to,
-                        rate: (1.0/element.time)*(element.transitions[i].weight/sumProbabilities)
-                    })
-                }
-
-                if(element.id === 1){
-                    chain[index].isInitialState = true
-                }
-
-            })
-
-            let result
-
-            event.target.setAttribute("enabled","false")
-
-            try{
-                result = calculateMTTF(chain)
-            }catch(e){
-                alert(e.message)
-                return
-            }finally{
-                event.target.setAttribute("enabled","true")
-            }
-
-            document.getElementById("MTTFInfo").innerHTML = result.mttf.toFixed(4)
-
-            const tblActRes = document.getElementById("tblActRes")
-
-            while(tblActRes.firstChild){
-                tblActRes.removeChild(tblActRes.lastChild)
-            }
-
-            const headerTR = document.createElement("tr")
-
-            const headerTHId = document.createElement("th")
-            headerTHId.appendChild(document.createTextNode("ID"))
-            headerTR.appendChild(headerTHId)
-
-            const headerTHLabel = document.createElement("th")
-            headerTHLabel.appendChild(document.createTextNode("Label"))
-            headerTR.appendChild(headerTHLabel)
-
-            const headerThPeriod = document.createElement("th")
-            headerThPeriod.appendChild(document.createTextNode("Execution Time"))
-            headerTR.appendChild(headerThPeriod)
-
-            const headerTHCost= document.createElement("th")
-            headerTHCost.appendChild(document.createTextNode("Total Cost"))
-            headerTR.appendChild(headerTHCost)
-
-            tblActRes.appendChild(headerTR)
-
-            let totalCost = 0
-
-            result.statePeriods.forEach((element, index) =>{
-
-                const currNode = nodes[element.number - 1]
-
-                const innerTR = document.createElement("tr")
-
-                const innerTDId = document.createElement("td")
-                innerTDId.appendChild(document.createTextNode(currNode.id))
-                innerTR.appendChild(innerTDId)
-
-                const innerTDLabel = document.createElement("td")
-                innerTDLabel.appendChild(document.createTextNode(currNode.activityLabel))
-                innerTR.appendChild(innerTDLabel)
-
-                const innerTDPeriod = document.createElement("td")
-                innerTDPeriod.appendChild(document.createTextNode(element.period.toFixed(4)))
-                innerTR.appendChild(innerTDPeriod)
-
-                const innerTDCost= document.createElement("td")
-                innerTDCost.appendChild(document.createTextNode((currNode.cost * element.period).toFixed(4)))
-                innerTR.appendChild(innerTDCost)
-
-                totalCost += (currNode.cost * element.period)
-
-                tblActRes.appendChild(innerTR)
-                
-            })
-
-            const tblAbsRes = document.getElementById("tblAbsRes")
-
-            while(tblAbsRes.firstChild){
-                tblAbsRes.removeChild(tblAbsRes.lastChild)
-            }
-
-            const headerTR2 = document.createElement("tr")
-
-            const headerTHId2 = document.createElement("th")
-            headerTHId2.appendChild(document.createTextNode("ID"))
-            headerTR2.appendChild(headerTHId2)
-
-            const headerTHLabel2 = document.createElement("th")
-            headerTHLabel2.appendChild(document.createTextNode("Label"))
-            headerTR2.appendChild(headerTHLabel2)
-
-            const headerThPeriod2 = document.createElement("th")
-            headerThPeriod2.appendChild(document.createTextNode("Occurrence Probabilities"))
-            headerTR2.appendChild(headerThPeriod2)
-
-
-            tblAbsRes.appendChild(headerTR2)
-
-            result.absortionProbabilities.forEach(element => {
-
-                const currNode = nodes[element.number - 1]
-
-                const innerTR = document.createElement("tr")
-
-                const innerTDId = document.createElement("td")
-                innerTDId.appendChild(document.createTextNode(currNode.id))
-                innerTR.appendChild(innerTDId)
-
-                const innerTDLabel = document.createElement("td")
-                innerTDLabel.appendChild(document.createTextNode(currNode.activityLabel))
-                innerTR.appendChild(innerTDLabel)
-
-                const innerTDPeriod = document.createElement("td")
-                innerTDPeriod.appendChild(document.createTextNode((element.probability * 100).toFixed(4)+"%"))
-                innerTR.appendChild(innerTDPeriod)
-
-                tblAbsRes.appendChild(innerTR)
-            })
-
-            document.getElementById("processCostInfo").innerHTML = totalCost.toFixed(4)
-
-            $("#modalResult").modal("show")
-
-        })
-
-        document.getElementById("btnCopyJSON").addEventListener("click", function(){
-            
-            const jso = JSON.parse(JSON.stringify(nodes))
-            
-            for(let i = 0; i < jso.length; i++){
-                delete jso[i].physics
-            }
-
-            navigator.clipboard.writeText(JSON.stringify(jso))
-            
-            alert("JSON Copied")
-
-        })
-
-    </script>
+    <script src="assets/js/codes/CTMCMTTF.js"></script>
+    <script src="assets/js/codes/activityCodes.js"></script>
+    <script src="assets/js/codes/transitionCodes.js"></script>
+    <script src="assets/js/codes/analysisCodes.js"></script>
+    <!-- Este código precisa estar aqui em baixo porque ele usa métodos definidos nos outros arquivos-->
+    <script src="assets/js/codes/boardCodes.js"></script>
+    
 </body>
 
 </html>
