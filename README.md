@@ -29,4 +29,4 @@ If you are curious of how the MTTF is calculated, please, consult https://arxiv.
 
 This program is free to use and you can modify it as you wish, since you respect the terms of the GPL v.3 License.
 You can help me to improve this project by sending me new features and eventual bugs that you face when using it. 
-If you have any sugestion or what to report bugs, please, send me mail: eduardo.vasconcelos@recife.ifpe.edu.br.
+If you have any sugestion or want to report bugs, please, send me mail: eduardo.vasconcelos@recife.ifpe.edu.br.
