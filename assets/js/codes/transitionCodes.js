@@ -95,6 +95,8 @@ const createTransition = function () {
     document.forms[1].getElementsByTagName("input")[0].value = ""
     
     $("#modalActivityInfo").modal("hide")
+
+    refreshListNodes()
     
     restartBoard()
 
@@ -135,6 +137,8 @@ let deleteTransition = function(event){
     
     $("#modalActivityInfo").modal("hide")
     $("#modalTransitionInfo").modal("hide")
+
+    refreshListNodes()
     
     restartBoard()
     
@@ -162,6 +166,8 @@ let updateTransition = function(event){
     edge.label = newWeight
     
     $("#modalTransitionInfo").modal("hide")
+
+    refreshListNodes()
     
     restartBoard()
     

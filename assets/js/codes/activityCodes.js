@@ -81,7 +81,7 @@ let createActivity = function () {
     document.forms[0].getElementsByTagName("input")[0].value = ""
     document.forms[0].getElementsByTagName("input")[1].value = ""
     document.forms[0].getElementsByTagName("input")[2].value = ""
-    
+
     if(lastNode!=1){
         nodes.push({
             id: lastNode++,
@@ -105,6 +105,8 @@ let createActivity = function () {
             physics: false
         })
     }
+
+    refreshListNodes()
 
     restartBoard()
 
@@ -169,6 +171,8 @@ let updateActivity = function(){
     node.label = `#${id}:${label}`
     node.time = time
     node.cost = cost
+
+    refreshListNodes()
     
     restartBoard()
     
@@ -228,6 +232,7 @@ const deleteActivity = function(event){
             edges[i].to--
     }
     
+    refreshListNodes()
     
     restartBoard()
     

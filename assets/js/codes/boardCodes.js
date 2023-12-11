@@ -27,12 +27,51 @@ var options = {
 }
 var network
 
+/*
+* These variables are used to controle de undo and redo processes.
+*/
+var listNodes = []
+const maxSize = 100
+var currentNode = -1
+
 var nodes = []
 var edges = []
 var lastNode = 1
 
 var boardNodes
 var boardEdges
+
+
+/*
+* Este código é usado para permitir o undo e o redo.
+*/
+function refreshListNodes(){
+    
+
+        if(currentNode != listNodes.length - 1){
+            listNodes.splice(currentNode + 1, listNodes.length - currentNode -1)
+            
+        }
+
+        listNodes.push({n: _jsonObjectClone(nodes), lastNode})
+
+        if(listNodes.length === maxSize){
+            listNodes.shift()
+            currentNode = maxSize - 1 
+        }else{
+            currentNode++
+        }
+
+        if (currentNode == listNodes.length - 1 || currentNode == maxSize - 1){
+            document.getElementById("btnRedo").setAttribute("disabled","true")
+        }
+
+        if(currentNode > 0){
+            document.getElementById("btnUndo").removeAttribute("disabled")
+        }
+        
+    
+}
 
 network = new vis.Network(container, {}, options)
 network.on("doubleClick", function(){
@@ -351,6 +390,8 @@ document.getElementById("btnLoadJSON").addEventListener("click", function(){
 
     lastNode = nodes.length + 1
 
+    refreshListNodes()
+
     restartBoard()
 
 })
@@ -371,3 +412,68 @@ document.getElementById("btnCopyJSON").addEventListener("click", function(){
     alert("JSON Copied")
 
 })
+
+document.getElementById("btnUndo").addEventListener("click", function(){
+
+    currentNode--
+
+    _loadUnRedo()
+
+})
+
+document.getElementById("btnRedo").addEventListener("click", function(){
+    currentNode++
+
+    _loadUnRedo()
+})
+
+function _loadUnRedo(){
+
+    nodes = _jsonObjectClone(listNodes[currentNode].n)
+    lastNode = listNodes[currentNode].lastNode
+
+    if(currentNode < listNodes.length - 1){
+        document.getElementById("btnRedo").removeAttribute("disabled")
+    }else{
+        document.getElementById("btnRedo").setAttribute("disabled","true")
+    }
+
+    if(currentNode == 0){
+        document.getElementById("btnUndo").setAttribute("disabled","true")
+    }else{
+        document.getElementById("btnUndo").removeAttribute("disabled")
+    }
+
+    edges = []
+
+    for(let i = 0; i < nodes.length; i++){
+
+        for(let j = 0; j < nodes[i].transitions.length; j++){
+            edges.push({
+                from: nodes[i].id,
+                to: nodes[i].transitions[j].to,
+                label: nodes[i].transitions[j].weight+"",
+                arrows: {
+                    to: {
+                        enabled: true,
+                        type: "arrow",
+                    }
+                },
+                
+            })
+        }
+
+    }
+
+    restartBoard()
+}
+
+
+/*
+* unfortunately that was the simpliest form to clone a object.
+* Although this method is unefficient, it´s is important to note that
+* it is used only on undo and redo processes
+*/
+function _jsonObjectClone(original){
+    return JSON.parse(JSON.stringify(original))
+}
